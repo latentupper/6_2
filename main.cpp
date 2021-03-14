@@ -5,7 +5,7 @@ template<typename F>
 class Factorial {
 public:
     explicit Factorial() = default;
-    auto operator()(F num) {
+    F operator()(F num) {
         if(num < cached.size()) return cached[num];
         //std::cout << "cache not enough, calculating" << std::endl;
         for(; cached.size() <= num; cached.push_back(cached.back() * cached.size())) {}
@@ -16,13 +16,13 @@ private:
 };
 
 int main() {
-    Factorial<unsigned> factorial{};
+    Factorial<unsigned long long> factorial{};
     std::cout << factorial(5) << std::endl;
     std::cout << factorial(4) << std::endl;
     std::cout << factorial(3) << std::endl;
     std::cout << factorial(2) << std::endl;
     std::cout << factorial(1) << std::endl;
     std::cout << factorial(0) << std::endl;
-    std::cout << factorial(6) << std::endl;
+    std::cout << factorial(20) << std::endl;
     return 0;
 }
